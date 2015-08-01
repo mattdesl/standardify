@@ -1,0 +1,66 @@
+.__standardify-container {
+  font-family: 'Courier New', monospace;
+  font-size: 12px; 
+  width: 100%;
+  height: 100%;
+  background: white;
+  -webkit-font-smoothing: antialias;
+  font-weight: bold;
+  position: absolute;
+  padding: 10px;
+  box-sizing: border-box;
+  top: 0px;
+  left: 0px;
+}
+
+.__standardify-intro {
+  padding: 10px;
+}
+
+.__standardify-link {
+  color: #3D3AE6;
+  font-weight: normal;
+  text-decoration: none;
+}
+.__standardify-link:hover {
+  color: #3D3AE6;
+  font-weight: normal;
+  text-decoration: underline;
+}
+
+
+.__standardify-file {
+  /*background: #d3d3d3;*/
+  border-left: 4px #C7C7C7 solid;
+  margin: 10px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 10px;
+  line-height: 20px;
+}
+
+.__standardify-message {
+  line-height: initial;
+  font-weight: normal;
+  margin-top: 2px;
+}
+
+.__standardify-file > div {
+  margin-left: 20px;
+}
+.__standardify-message > span {
+  display: inline-block;
+}
+.__standardify-message > span.__standardify-location {
+  min-width: 70px;
+  font-weight: bold;
+  color: #4b4b4b;
+}
+.__standardify-message > span.__standardify-type {
+  color: #D82D2D;
+  font-weight: bold;
+  min-width: 70px;
+}
+.__standardify-message > span.__standardify-rule {
+  display: none;
+}

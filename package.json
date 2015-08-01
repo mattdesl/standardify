@@ -1,0 +1,39 @@
+{
+  "name": "standardify",
+  "version": "1.0.0",
+  "description": "browserify plugin to force linting at bundle time",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Matt DesLauriers",
+    "email": "dave.des@gmail.com",
+    "url": "https://github.com/mattdesl"
+  },
+  "dependencies": {
+    "insert-css": "^0.2.0",
+    "pluralize": "^1.1.2",
+    "standard": "^4.5.4",
+    "through2": "^2.0.0"
+  },
+  "devDependencies": {
+    "browserify": "^11.0.1"
+  },
+  "scripts": {
+    "test": "standard && node test.js"
+  },
+  "keywords": [
+    "lint",
+    "browserify",
+    "dom",
+    "console",
+    "browser"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mattdesl/standardify.git"
+  },
+  "homepage": "https://github.com/mattdesl/standardify",
+  "bugs": {
+    "url": "https://github.com/mattdesl/standardify/issues"
+  }
+}
