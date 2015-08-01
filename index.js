@@ -4,14 +4,16 @@ var path = require('path')
 var cssFile = path.join(__dirname, 'style.css')
 var stylesheet = require('fs').readFileSync(cssFile, 'utf8')
 
-function template (data, stylesheet) {
+function template (data, stylesheet, opt) {
   if (typeof document === 'undefined') return
   print()
-  if (!document.body) {
-    document.addEventListener('DOMContentLoaded', print)
-  } else {
-    insertCSS(stylesheet)
-    render()
+  if (opt.dom !== false) {
+    if (!document.body) {
+      document.addEventListener('DOMContentLoaded', print)
+    } else {
+      insertCSS(stylesheet)
+      render()
+    }
   }
   function insertCSS (css) {
     var elem = document.createElement('style')
@@ -107,17 +109,18 @@ function template (data, stylesheet) {
   }
 }
 
-function replace (result) {
+function replace (result, opt) {
   return '!' + template + '(' + JSON.stringify(result) + ', ' +
-  JSON.stringify(stylesheet) + ')'
+    JSON.stringify(stylesheet) + ', ' +
+    JSON.stringify(opt) + ')'
 }
 
 module.exports = standardify
-function standardify (b) {
+function standardify (b, opt) {
+  opt = opt || {}
   var bundle = b.bundle.bind(b)
   b.bundle = function (cb) {
     var output = through()
-    console.error('Linting', b.argv.basedir)
     standard.lintFiles([], {
       cwd: b.argv.basedir || process.cwd()
     }, function (err, data) {
@@ -127,7 +130,7 @@ function standardify (b) {
 
       var pipeline = bundle(cb)
       if (data.errorCount > 0) {
-        output.push(replace(data))
+        output.push(replace(data, opt))
         output.push(null)
         pipeline.unpipe(output)
       } else {
